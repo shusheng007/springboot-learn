@@ -2,6 +2,7 @@ package top.ss007.springlearn.controlles;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import top.ss007.springlearn.config.InfoConfig;
 import top.ss007.springlearn.model.UserModel;
@@ -35,6 +36,16 @@ public class MyController {
         list.add(userModel.getConversionConfig());
         list.add(userModel.getImmutablePresident());
         return list;
+    }
+
+    @GetMapping(value = "/check")
+    public String isSameObj(){
+        return userModel.isSameObj();
+    }
+
+    @GetMapping(value = "/filter")
+    public String testFilter(@RequestParam(name = "name",required = false)String name){
+        return String.valueOf(name);
     }
 
 

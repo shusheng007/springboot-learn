@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Repository;
 import top.ss007.springlearn.config.*;
+import top.ss007.springlearn.config.configuration_annotaion.Father;
+import top.ss007.springlearn.config.configuration_annotaion.MyConfiguration;
 
 /**
  * Created by Ben.Wang
@@ -25,6 +27,9 @@ public class UserModel {
     private final ComplexConfig complexConfig;
     private final ConversionConfig conversionConfig;
     private final ImmutablePresident immutablePresident;
+
+    @Autowired
+    public MyConfiguration myConfiguration;
 
 
     @Autowired
@@ -63,6 +68,15 @@ public class UserModel {
 
     public String getImmutablePresident(){
         return immutablePresident.toString();
+    }
+
+
+    public String isSameObj() {
+        Father father1 = myConfiguration.father();
+        Father father2 = myConfiguration.father();
+
+        return String.format("father1:%s | father2:%s 是否为同一对象:%s",father1.getClass().getClassLoader(),
+                father2.getClass().getClassLoader(),father1 == father2);
     }
 
 }
