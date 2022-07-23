@@ -1,0 +1,53 @@
+
+demo:
+  user:
+     name: ss007
+
+
+database:
+  username: ss007
+  password: wb123
+  server.ip: 192.168.1.1
+  server.port: 8000
+
+
+#Simple properties
+school:
+  name: BIT
+  address: BeiJin
+#  List
+  xiao-qu:
+    - \u4E2D\u5173\u6751
+    - \u826F\u4E61
+#Map Properties
+  department:
+     optoelectronic: 200
+     software: 300
+#Object properties
+  president:
+     name: sb
+     age: 60
+     gender: \u6C49\u5B50
+
+
+#转换功能
+#时间,默认单位为毫秒：MS
+conversion:
+  timeInDefaultUnit: 10
+  timeInHour: 8h
+  #文件Size,默认单位为比特：B
+  sizeInDefaultUnit: 125
+  sizeInGB: 2GB
+  sizeInTB: 4TB
+
+#自定义属性值，可以通过转换器转换为其他类型
+developer:
+  ss007;18;java
+
+
+
+
+
+
+
+
