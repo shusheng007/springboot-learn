@@ -1,9 +1,8 @@
-package top.shusheng007.rabbitmqintegrate.controller;
+package top.shusheng007.stream.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 /**

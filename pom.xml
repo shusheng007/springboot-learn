@@ -22,6 +22,7 @@
 
     <modules>
         <module>rabbitmq-integrate</module>
+<!--        <module>sc-stream-integrate</module>-->
     </modules>
 
     <dependencies>

@@ -1,4 +1,4 @@
-package top.shusheng007.rabbitmqintegrate.mq;
+package top.shusheng007.stream.mq;
 
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.BindingBuilder;

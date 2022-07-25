@@ -1,4 +1,4 @@
-package top.shusheng007.rabbitmqintegrate.controller;
+package top.shusheng007.scstream.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,15 +21,10 @@ public class TriggerController {
 
     private final SendService sendService;
 
-    @GetMapping("/send")
-    public String sendMsgToMq(@RequestParam String msg){
-        sendService.sendMsg(msg);
-        return "ok";
-    }
 
     @GetMapping("/sendTopic")
-    public String sendTopicMsgToMq(@RequestParam String msg,@RequestParam String route){
-        sendService.sendTopicMsg(msg,route);
+    public String sendTopicMsgToMq(@RequestParam String msg,@RequestParam Integer id){
+        sendService.sendMsg(msg,id);
         return "ok";
     }
 }
