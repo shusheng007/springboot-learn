@@ -21,20 +21,31 @@ public class SendService {
 
    private final StreamBridge streamBridgeTemplate;
 
-   public void sendMsg(String msg,Integer id){
-      streamBridgeTemplate.send("ss007Consumer-in-0",
+   public void sendMsg2Func(String msg,Integer id){
+      streamBridgeTemplate.send("ss007Function-in-0",
               MessageBuilder.withPayload(MsgData.builder()
                       .id(id)
                       .content(msg)
                       .build())
                       .build());
+   }
 
-      streamBridgeTemplate.send("ss007Function1-in-0",
+   public void sendMsg2Sup(String msg,Integer id){
+      streamBridgeTemplate.send("ss007AutoProducer-out-0",
               MessageBuilder.withPayload(MsgData.builder()
                       .id(id)
                       .content(msg)
                       .build())
                       .build());
+   }
+
+   public void sendMsg2RouteConsumer(String msg, Integer id){
+//      streamBridgeTemplate.send("functionRouter-in-0",
+//              MessageBuilder.withPayload(MsgData.builder()
+//                      .id(id)
+//                      .content(msg)
+//                      .build()).setHeader("type",id)
+//                      .build());
    }
 
 }

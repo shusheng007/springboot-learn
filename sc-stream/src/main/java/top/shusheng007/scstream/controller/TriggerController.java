@@ -22,9 +22,15 @@ public class TriggerController {
     private final SendService sendService;
 
 
-    @GetMapping("/sendTopic")
-    public String sendTopicMsgToMq(@RequestParam String msg,@RequestParam Integer id){
-        sendService.sendMsg(msg,id);
+    @GetMapping("/sendFunc")
+    public String sendMsg2Func(@RequestParam String msg,@RequestParam Integer id){
+        sendService.sendMsg2Func(msg,id);
+        return "ok";
+    }
+
+    @GetMapping("/sendMsg2Sup")
+    public String sendMsg2Route(@RequestParam String msg,@RequestParam Integer id){
+        sendService.sendMsg2Sup(msg,id);
         return "ok";
     }
 }

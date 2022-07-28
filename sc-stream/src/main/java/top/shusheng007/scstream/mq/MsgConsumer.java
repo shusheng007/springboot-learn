@@ -19,22 +19,34 @@ import java.util.function.Consumer;
 public class MsgConsumer {
 
     @Bean
-    public Consumer<MsgData> ss007Consumer(){
+    public Consumer<MsgData> ss007AutoConsumer() {
         return new Consumer<MsgData>() {
             @Override
             public void accept(MsgData msgData) {
-                log.info("ss007Consumer接到消息：{}",msgData.toString());
+                log.info("ss007AutoConsumer接到消息：{}", msgData.toString());
             }
         };
     }
 
     @Bean
-    public Consumer<String> ss007Consumer2(){
+    public Consumer<String> ss007FuncConsumer() {
         return new Consumer<String>() {
             @Override
             public void accept(String msgData) {
-                log.info("ss007Consumer2接到消息：{}",msgData);
+                log.info("ss007FuncConsumer接到消息：{}", msgData);
             }
         };
     }
+
+//    @Bean
+//    public Consumer<String> ss007RouteConsumer() {
+//        return new Consumer<String>() {
+//            @Override
+//            public void accept(String msgData) {
+//                log.info("ss007RouteConsumer接到消息：{}", msgData);
+//            }
+//        };
+//    }
+
+
 }

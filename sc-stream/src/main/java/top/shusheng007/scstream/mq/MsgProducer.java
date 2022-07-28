@@ -16,21 +16,18 @@ import java.util.function.Supplier;
  *
  * @author benwang
  * @date 2022/7/24 17:37
- * @description:
+ * @description: 模拟消息生产微服务
  */
 @Slf4j
 @Configuration
 public class MsgProducer {
 
-    @Value("${app.supplier-enabled:false}")
-    private Boolean supplierEnable;
     private int id = 1;
 
+    //消息自动生成器
     @Bean
     public Supplier<Message<MsgData>> ss007AutoProducer() {
-        if(!supplierEnable){
-            return null;
-        }
+
         return  new Supplier<Message<MsgData>>() {
             @Override
             public Message<MsgData> get() {
@@ -45,8 +42,9 @@ public class MsgProducer {
 
     }
 
+    //从其他服务接收消息，然后发送给另一个服务
     @Bean
-    public Function<Message<MsgData>,Message<String>> ss007Function1(){
+    public Function<Message<MsgData>,Message<String>> ss007Function(){
         return new Function<Message<MsgData>, Message<String>>() {
             @Override
             public Message<String> apply(Message<MsgData> msg) {
