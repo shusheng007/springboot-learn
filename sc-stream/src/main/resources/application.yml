@@ -1,0 +1,68 @@
+spring:
+  application:
+    name: sc-stream
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
+  cloud:
+    stream:
+      binders:
+        #binder名称，随便叫
+        defaultRabbit:
+          #你要使用的消息中间件，例如rabbit，kafka
+          type: rabbit
+          environment:
+            spring:
+              rabbitmq:
+                host: localhost
+                port: 5672
+                username: guest
+                password: guest
+      bindings:
+        #代码中的生产者名称,模拟自动发送消息
+        ss007AutoProducer-out-0:
+          binder: defaultRabbit
+          destination: ss007-auto-topic
+
+        ss007AutoConsumer-in-0:
+          binder: defaultRabbit
+          #消息主题（kafka）或者交换器（rabbit）
+          destination: ss007-auto-topic
+          #content-type: text/plain #设置消息类型，默认为"application/json"
+          group: ss007-auto-group
+
+        #代码中function的名称
+        ss007Function-in-0:
+          binder: defaultRabbit
+          destination: ss007-auto-topic
+          group: ss007-func-group
+        ss007Function-out-0:
+          binder: defaultRabbit
+          destination: ss007-func-topic
+
+        #代码中的消费者名称，格式[函数名称]-in-[index]
+        ss007FuncConsumer-in-0:
+          binder: defaultRabbit
+          #消息主题（kafka）或者交换器（rabbit）
+          destination: ss007-func-topic
+          group: ss007-func-group
+
+      output-bindings: ss007AutoProducer
+#      source: ss007AutoProducer
+
+    #      function:
+    #        #开启消费端消息路由功能
+#        routing:
+#          enable: true
+
+    function:
+      #代码中定义的函数名称
+#      definition: ss007AutoProducer;ss007Consumer
+      definition: ss007Function;ss007AutoConsumer;ss007FuncConsumer
+#      routing-expression: (headers['type']==1) ? 'ss007Consumer':'ss007Consumer2'
+
+
+

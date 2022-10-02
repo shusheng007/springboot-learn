@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import top.shusheng007.composite.mybatisplus.persistence.po.StudentPo;
-import top.shusheng007.composite.mybatisplus.persistence.service.StudentPoService;
+import top.shusheng007.mybatisplus.persistence.po.StudentPo;
+import top.shusheng007.mybatisplus.persistence.service.StudentPoService;
 
 import java.util.List;
 
