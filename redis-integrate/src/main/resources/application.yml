@@ -1,0 +1,26 @@
+spring:
+  redis:
+    #redis\u6570\u636E\u5E93\uFF0C\u5176\u670916\u4E2A\u6570\u636E\u5E93
+    database: 0
+    #redis\u670D\u52A1\u5668\u5730\u5740
+    host: localhost
+    #redis\u670D\u52A1\u5668\u7AEF\u53E3\u53F7
+    port: 6379
+    #\u8FDE\u63A5\u6C60\u914D\u7F6E
+    lettuce:
+      pool:
+        enabled: true
+        max-active: 8
+        max-wait: 10s
+#    cluster:
+#      nodes:
+#        - 172.19.0.11:6379
+#        - 172.19.0.12:6380
+#        - 172.19.0.13:6381
+#        - 172.19.0.14:6382
+#        - 172.19.0.15:6383
+#        - 172.19.0.16:6384
+#      max-redirects: 3
+
+
+
