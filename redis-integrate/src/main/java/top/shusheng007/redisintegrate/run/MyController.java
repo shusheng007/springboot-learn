@@ -62,4 +62,14 @@ public class MyController {
        return redisOpsService.testLuaScript();
     }
 
+    @GetMapping("/testLock")
+    public void testLock(){
+        redisOpsService.testDistributeLock();
+    }
+
+    @GetMapping("/testClient")
+    public void testClient(){
+        redisOpsService.testRedisClient();
+    }
+
 }
