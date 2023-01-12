@@ -36,7 +36,7 @@
             <plugin>
                 <groupId>com.spotify</groupId>
                 <artifactId>docker-maven-plugin</artifactId>
-                <!--                <version>${docker.plugin.version}</version>-->
+                <version>${docker.plugin.version}</version>
                 <configuration>
                     <serverId>${docker.server.id}</serverId>
                     <registryUrl>${docker.registry.url}</registryUrl>
