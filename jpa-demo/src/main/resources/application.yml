@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: jap-demo
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres?currentSchema=public,jpa-db
+    username: postgres
+    password: pgsql
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: 2
+  jpa:
+#    show-sql: true
+    generate-ddl: true
+
+#    open-in-view: false
+#    hibernate:
+#      ddl-auto: none
+    properties:
+      hibernate:
+        format_sql: true
+#        dialect: org.hibernate.spatial.dialect.postgis.PostgisDialect
+
+logging:
+  level:
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql: TRACE #JDBC parameters passed to a query
+#    org.hibernate.type: TRACE   #JDBC parameters passed to a query

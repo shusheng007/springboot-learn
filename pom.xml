@@ -25,6 +25,7 @@
         <module>read-write-split</module>
         <module>redis-integrate</module>
         <module>useful-tools</module>
+        <module>jpa-demo</module>
 <!--        <module>sc-stream-integrate</module>-->
     </modules>
 
