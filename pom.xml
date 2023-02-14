@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.7.5</version>
+        <version>2.7.8</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
@@ -28,14 +28,17 @@
         <module>mvc-inspect</module>
         <module>rabbitmq-integrate</module>
         <module>read-write-split</module>
+        <module>mybatis-plus</module>
         <module>redis-integrate</module>
         <module>useful-tools</module>
         <module>sc-stream</module>
-        <module>spring-security-mvc</module>
     </modules>
 
     <dependencies>
-
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -62,9 +65,8 @@
             <optional>true</optional>
         </dependency>
 
-
-
     </dependencies>
+
     <build>
         <plugins>
             <plugin>
