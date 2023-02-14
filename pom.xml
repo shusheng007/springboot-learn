@@ -32,6 +32,7 @@
         <module>redis-integrate</module>
         <module>useful-tools</module>
         <module>sc-stream</module>
+        <module>spring-security-mvc-inspect</module>
     </modules>
 
     <dependencies>
