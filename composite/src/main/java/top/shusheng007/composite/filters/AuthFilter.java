@@ -1,6 +1,7 @@
 package top.shusheng007.composite.filters;
 
 
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.annotation.Order;
@@ -18,11 +19,10 @@ import java.io.IOException;
  * description:
  */
 
+@Slf4j
 @Component
-@Order(1)
+@Order(2)
 public class AuthFilter implements Filter {
-    private static final Logger log = LoggerFactory.getLogger(AuthFilter.class);
-
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         HttpServletRequest request = (HttpServletRequest) servletRequest;

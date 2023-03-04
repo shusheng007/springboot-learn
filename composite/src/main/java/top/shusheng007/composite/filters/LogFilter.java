@@ -1,6 +1,7 @@
 package top.shusheng007.composite.filters;
 
 
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.annotation.Order;
@@ -18,10 +19,10 @@ import java.io.IOException;
  * description:
  */
 
-@Order(2)
+@Slf4j
+@Component
+@Order(1)
 public class LogFilter implements Filter {
-    private static final Logger log = LoggerFactory.getLogger(LogFilter.class);
-
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         HttpServletRequest request = (HttpServletRequest) servletRequest;

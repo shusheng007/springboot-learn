@@ -1,5 +1,6 @@
 package top.shusheng007.composite.filters;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,17 +15,15 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class FilterConfiguration {
 
-//    @Bean
-//    public LogFilter logFilter(){
-//        return new LogFilter();
-//    }
+    @Autowired
+    private AuthFilter authFilter;
 
     @Bean
-    public FilterRegistrationBean<LogFilter> filterRegistrationBean() {
-        FilterRegistrationBean registrationBean = new FilterRegistrationBean();
-        registrationBean.setFilter(new LogFilter());
+    public FilterRegistrationBean<AuthFilter> filterRegistrationBean() {
+        FilterRegistrationBean<AuthFilter> registrationBean = new FilterRegistrationBean<>();
+        registrationBean.setFilter(authFilter);
         registrationBean.addUrlPatterns("/filter/*");
-        registrationBean.setOrder(2);
+        registrationBean.setOrder(0);
         return registrationBean;
     }
 }
