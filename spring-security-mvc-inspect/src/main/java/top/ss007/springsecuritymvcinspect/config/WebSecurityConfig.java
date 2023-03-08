@@ -65,7 +65,7 @@ public class WebSecurityConfig {
                         "/*.html"
                 ).permitAll()
                 //对登录注册允许匿名访问
-                .antMatchers("/user/login", "/user/register").permitAll()
+                .antMatchers("/user/login1", "/user/register").permitAll()
                 //跨域请求会先进行一次options请求
                 .antMatchers(HttpMethod.OPTIONS).permitAll()
                 //测试时全部运行访问.permitAll();

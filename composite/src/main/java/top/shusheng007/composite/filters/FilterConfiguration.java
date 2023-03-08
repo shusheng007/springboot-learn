@@ -22,7 +22,7 @@ public class FilterConfiguration {
     public FilterRegistrationBean<AuthFilter> filterRegistrationBean() {
         FilterRegistrationBean<AuthFilter> registrationBean = new FilterRegistrationBean<>();
         registrationBean.setFilter(authFilter);
-        registrationBean.addUrlPatterns("/filter/*");
+        registrationBean.addUrlPatterns("/auth/*");
         registrationBean.setOrder(0);
         return registrationBean;
     }

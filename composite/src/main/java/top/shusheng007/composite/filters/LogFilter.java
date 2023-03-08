@@ -2,8 +2,6 @@ package top.shusheng007.composite.filters;
 
 
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
@@ -26,7 +24,7 @@ public class LogFilter implements Filter {
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
-        log.info("LogFilter请求url：{} | param:{}", request.getRequestURL(),request.getQueryString());
+//        log.info("LogFilter请求url：{} | param:{}", request.getRequestURL(),request.getQueryString());
 
         filterChain.doFilter(servletRequest,servletResponse);
     }

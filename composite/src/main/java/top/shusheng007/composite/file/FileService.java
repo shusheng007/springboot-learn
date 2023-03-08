@@ -1,4 +1,4 @@
-package top.shusheng007.composite.common.service;
+package top.shusheng007.composite.file;
 
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;

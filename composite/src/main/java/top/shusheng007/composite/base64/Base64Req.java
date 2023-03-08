@@ -1,4 +1,4 @@
-package top.shusheng007.composite.base64.model.entity;
+package top.shusheng007.composite.base64;
 
 import lombok.Data;
 

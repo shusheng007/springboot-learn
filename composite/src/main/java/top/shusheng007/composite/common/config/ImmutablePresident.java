@@ -2,7 +2,6 @@ package top.shusheng007.composite.common.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.ConstructorBinding;
-import org.springframework.context.annotation.Configuration;
 
 /**
  * Created by Ben.Wang
@@ -13,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
  */
 
 
-@ConfigurationProperties(prefix = "school.president",ignoreInvalidFields = true)
+@ConfigurationProperties(prefix = "school.president", ignoreInvalidFields = true)
 @ConstructorBinding
 public class ImmutablePresident {
 
