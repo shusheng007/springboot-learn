@@ -4,7 +4,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import top.ss007.usefaulltools.model.*;
-import top.ss007.usefaulltools.model.convetor.ClzProgramerConvertor;
 import top.ss007.usefaulltools.model.convetor.HumanConvertor;
 import top.ss007.usefaulltools.model.convetor.ProgramerConvetor;
 
