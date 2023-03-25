@@ -1,16 +1,12 @@
 package top.ss007.usefaulltools.model.convetor;
 
 import org.mapstruct.*;
-import org.mapstruct.factory.Mappers;
-import org.springframework.beans.factory.annotation.Autowired;
 import top.ss007.usefaulltools.model.Address;
 import top.ss007.usefaulltools.model.AddressDto;
 import top.ss007.usefaulltools.model.Programer;
 import top.ss007.usefaulltools.model.ProgramerDto;
 
 import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING,
         uses = {

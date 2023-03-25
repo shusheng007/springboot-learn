@@ -2,8 +2,6 @@ package top.ss007.usefaulltools.model;
 
 import lombok.Data;
 
-import java.util.Date;
-
 @Data
 public class ProgramerDto {
     private String name;
