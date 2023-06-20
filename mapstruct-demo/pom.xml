@@ -9,10 +9,10 @@
     </parent>
 
     <groupId>top.ss007</groupId>
-    <artifactId>usefaull-tools</artifactId>
+    <artifactId>mapstruct-demo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>useful-tools</name>
-    <description>useful-tools</description>
+    <name>mapstruct-demo</name>
+    <description>mapstruct-demo</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

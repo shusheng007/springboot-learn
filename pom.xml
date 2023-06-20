@@ -30,9 +30,10 @@
         <module>read-write-split</module>
         <module>mybatis-plus</module>
         <module>redis-integrate</module>
-        <module>useful-tools</module>
+        <module>mapstruct-demo</module>
         <module>sc-stream</module>
         <module>spring-security-mvc-inspect</module>
+        <module>springdoc-integrate</module>
     </modules>
 
     <dependencies>
