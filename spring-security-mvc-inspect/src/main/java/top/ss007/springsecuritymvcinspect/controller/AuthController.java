@@ -39,7 +39,7 @@ public class AuthController {
 
 
         String token = JWT.create()
-                .setExpiresAt(new Date(System.currentTimeMillis() + (1000 * 30)))
+//                .setExpiresAt(new Date(System.currentTimeMillis() + (1000 * 30)))
                 .setPayload("username", req.getUsername())
                 .setKey(MyConstant.JWT_SIGN_KEY.getBytes(StandardCharsets.UTF_8))
                 .sign();

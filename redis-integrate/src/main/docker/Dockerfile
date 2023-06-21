@@ -1,6 +1,6 @@
 FROM openjdk:8-jre
 
-MAINTAINER benwang <benwang@linkdoc.com>
+MAINTAINER shusheng007
 
 RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 

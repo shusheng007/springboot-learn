@@ -7,6 +7,7 @@
         <artifactId>spring-learn</artifactId>
         <version>0.0.1-SNAPSHOT</version><!-- lookup parent from repository -->
     </parent>
+
     <groupId>top.shusheng007</groupId>
     <artifactId>mvc-inspect</artifactId>
     <version>0.0.1-SNAPSHOT</version>

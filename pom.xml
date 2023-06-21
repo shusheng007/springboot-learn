@@ -20,6 +20,8 @@
         <java.version>11</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.plugin.version>3.8.1</maven.plugin.version>
+        <hutool-core.version>5.8.18</hutool-core.version>
+        <hutool-json.version>5.8.18</hutool-json.version>
     </properties>
 
     <modules>
@@ -65,6 +67,18 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-core</artifactId>
+            <version>${hutool-core.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-json</artifactId>
+            <version>${hutool-json.version}</version>
         </dependency>
 
     </dependencies>

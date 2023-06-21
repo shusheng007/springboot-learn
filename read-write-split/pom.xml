@@ -7,11 +7,12 @@
         <artifactId>spring-learn</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
+
     <groupId>top.shusheng007</groupId>
     <artifactId>read-write-split</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>read-write-split</name>
-    <description>Demo project for Spring Boot</description>
+    <description>read write split use mybatis</description>
 
     <properties>
         <java.version>1.8</java.version>

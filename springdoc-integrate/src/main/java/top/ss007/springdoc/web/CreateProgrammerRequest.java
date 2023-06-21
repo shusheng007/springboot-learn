@@ -9,7 +9,7 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import java.util.List;
 
-@Schema(description = "创建程序员入参")
+@Schema(description = "创建程序员请求实体")
 @Setter
 @Getter
 public class CreateProgrammerRequest {
