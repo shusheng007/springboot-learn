@@ -21,6 +21,8 @@ import top.ss007.springdoc.entity.Programmer;
 import top.ss007.springdoc.service.ProgrammerService;
 import top.ss007.springdoc.web.CreateProgrammerRequest;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -66,6 +68,7 @@ public class ProgrammerController {
 
     @GetMapping("/{id}")
     public Result<Programmer> getProgrammer(@Parameter(description = "程序员id") @PathVariable Integer id) {
+
         return Result.ok(service.getProgrammers().stream()
                 .filter(p -> p.getId().equals(id))
                 .findFirst()
