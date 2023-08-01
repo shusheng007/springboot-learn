@@ -1,4 +1,4 @@
-package top.shusheng007.redisintegrate.run;
+package top.shusheng007.redisintegrate.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
