@@ -10,6 +10,7 @@ import io.swagger.v3.oas.models.security.SecurityRequirement;
 import org.springdoc.core.GroupedOpenApi;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import top.ss007.springdoc.constant.Constant;
 
 import java.util.List;
 
@@ -31,7 +32,8 @@ public class SpringDocConfig {
                 .externalDocs(new ExternalDocumentation()
                         .description("ShuSheng007博客")
                         .url("https://shusheng007.top"))
-                .security(List.of(new SecurityRequirement().addList("api_token")));
+                .security(List.of(new SecurityRequirement().addList(Constant.API_TOKEN_SECURITY_SCHEMA),
+                        new SecurityRequirement().addList(Constant.API_KEY_SECURITY_SCHEMA)));
     }
 
     @Bean

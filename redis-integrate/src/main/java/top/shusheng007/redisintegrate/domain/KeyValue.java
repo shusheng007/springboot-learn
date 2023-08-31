@@ -1,4 +1,4 @@
-package top.shusheng007.redisintegrate.run;
+package top.shusheng007.redisintegrate.domain;
 
 import lombok.Data;
 

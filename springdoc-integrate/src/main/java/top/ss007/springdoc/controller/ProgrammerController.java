@@ -21,6 +21,8 @@ import top.ss007.springdoc.entity.Programmer;
 import top.ss007.springdoc.service.ProgrammerService;
 import top.ss007.springdoc.web.CreateProgrammerRequest;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -53,6 +55,7 @@ public class ProgrammerController {
         return new Programmer(666, "王二狗", request.getAge(), request.getProgrammingLang());
     }
 
+    @Operation(summary = "查询程序员", description = "根据姓名查询程序员")
     @Parameters(value = {
             @Parameter(name = "name", description = "姓名", in = ParameterIn.PATH),
             @Parameter(name = "age", description = "年龄", in = ParameterIn.QUERY)
@@ -64,8 +67,10 @@ public class ProgrammerController {
                 .collect(Collectors.toList());
     }
 
+    @Operation(summary = "查询程序员", description = "根据id查询程序员")
     @GetMapping("/{id}")
-    public Result<Programmer> getProgrammer(@Parameter(description = "程序员id") @PathVariable Integer id) {
+    public Result<Programmer> getProgrammer(@Parameter(description = "程序员id", example = "666") @PathVariable Integer id) {
+
         return Result.ok(service.getProgrammers().stream()
                 .filter(p -> p.getId().equals(id))
                 .findFirst()
