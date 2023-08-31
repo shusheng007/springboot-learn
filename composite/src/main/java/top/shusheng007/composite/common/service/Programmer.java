@@ -1,17 +1,22 @@
 package top.shusheng007.composite.common.service;
 
-/**
- * Copyright (C) 2021 ShuSheng007
- * 完全享有此软件的著作权
- *
- * @author ShuSheng007
- * @time 2021/6/13 16:39
- * @description
- */
-public class Programmer {
 
-    private final String content ="码字如飞";
-    public String program(){
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.stereotype.Component;
+
+@Slf4j
+@Component
+public class Programmer implements CommandLineRunner {
+
+    private final String content = "码字如飞";
+
+    public String program() {
         return content;
+    }
+
+    @Override
+    public void run(String... args) throws Exception {
+        log.info("current thread id:{} name:{}", Thread.currentThread().getId(), Thread.currentThread().getName());
     }
 }

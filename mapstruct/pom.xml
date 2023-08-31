@@ -9,9 +9,9 @@
     </parent>
 
     <groupId>top.ss007</groupId>
-    <artifactId>mapstruct-demo</artifactId>
+    <artifactId>mapstruct</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>mapstruct-demo</name>
+    <name>mapstruct</name>
     <description>mapstruct-demo</description>
 
     <properties>
