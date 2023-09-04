@@ -22,6 +22,7 @@
         <maven.plugin.version>3.8.1</maven.plugin.version>
         <hutool-core.version>5.8.18</hutool-core.version>
         <hutool-json.version>5.8.18</hutool-json.version>
+        <spring-cloud.version>2021.0.5</spring-cloud.version>
     </properties>
 
     <modules>
@@ -82,6 +83,18 @@
         </dependency>
 
     </dependencies>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <build>
         <plugins>
