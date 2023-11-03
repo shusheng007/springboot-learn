@@ -10,7 +10,7 @@ import java.util.concurrent.CompletableFuture;
 @Service
 public class ConcurrencyService {
 
-    @Async("threadPoolExecutorCpu")
+    @Async("threadPoolExecutor")
     public void runAsync(Integer id) {
         log.info("start:{},num:{}", Thread.currentThread().getId(), id);
         try {
