@@ -17,8 +17,8 @@ public class EventController {
     @GetMapping("/home")
     public String arrivedHome() {
         log.info("start event");
-//        eventService.goHome();
-        eventService.shit();
+        eventService.goHome();
+        eventService.poop();
         log.info("end event");
         return "ok";
     }

@@ -72,4 +72,8 @@ public class MyController {
         redisOpsService.testRedisClient();
     }
 
+    @GetMapping("/testSerializer")
+    public void testSerializer(){
+        redisOpsService.testRedisSerializer();
+    }
 }

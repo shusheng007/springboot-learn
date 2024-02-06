@@ -3,7 +3,7 @@ package top.shusheng007.composite.springevent;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
-import top.shusheng007.composite.springevent.event.FinishShitEvent;
+import top.shusheng007.composite.springevent.event.FinishPoopEvent;
 import top.shusheng007.composite.springevent.event.OpenDoorEvent;
 
 import java.time.LocalDateTime;
@@ -18,8 +18,8 @@ public class EventService {
         publisher.publishEvent(new OpenDoorEvent("open door", LocalDateTime.now().format(DateTimeFormatter.ISO_LOCAL_DATE_TIME)));
     }
 
-    public void shit() {
-        publisher.publishEvent(new FinishShitEvent("finish shit", LocalDateTime.now().format(DateTimeFormatter.ISO_LOCAL_DATE_TIME)));
+    public void poop() {
+        publisher.publishEvent(new FinishPoopEvent("finish shit", LocalDateTime.now().format(DateTimeFormatter.ISO_LOCAL_DATE_TIME)));
 
     }
 }

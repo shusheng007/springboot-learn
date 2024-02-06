@@ -9,5 +9,4 @@ import lombok.RequiredArgsConstructor;
 public class OpenDoorEvent {
     private final String event;
     private final String time;
-
 }

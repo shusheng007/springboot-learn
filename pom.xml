@@ -37,7 +37,7 @@
         <module>sc-stream</module>
         <module>spring-security-mvc-inspect</module>
         <module>springdoc-integrate</module>
-        <module>openfeign</module>
+<!--        <module>openfeign</module>-->
     </modules>
 
     <dependencies>

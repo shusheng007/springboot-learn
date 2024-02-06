@@ -1,5 +1,6 @@
 package top.shusheng007.redisintegrate.service;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import io.lettuce.core.RedisAsyncCommandsImpl;
 import io.lettuce.core.RedisFuture;
 import io.lettuce.core.api.StatefulRedisConnection;
@@ -18,6 +19,7 @@ import org.springframework.data.redis.serializer.SerializationException;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
+import top.shusheng007.redisintegrate.domain.KeyValue;
 
 import java.nio.charset.StandardCharsets;
 import java.util.*;
@@ -321,6 +323,20 @@ public class RedisOpsService {
         });
     }
 
+    public void testRedisSerializer() {
+        ValueOperations<String, Object> valueOperations = redisTemplate.opsForValue();
+        valueOperations.set("string", "总有刁民想害朕");
+        log.info("string:{}", valueOperations.get("string"));
+
+        valueOperations.set("object",new KeyValue("age",18));
+
+        Object keyValue = valueOperations.get("object");
+
+        String clsName = keyValue.getClass().getCanonicalName();
+        log.info("object:{},name:{}", keyValue,clsName);
+
+
+    }
 
 
 }
