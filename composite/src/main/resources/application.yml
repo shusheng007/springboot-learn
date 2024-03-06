@@ -1,7 +1,15 @@
+server:
+  port: 8001
+spring:
+  application:
+    name: composite-service
+
+
+
 
 demo:
   user:
-     name: ss007
+    name: ss007
 
 
 database:
@@ -21,13 +29,13 @@ school:
     - \u826F\u4E61
 #Map Properties
   department:
-     optoelectronic: 200
-     software: 300
+    optoelectronic: 200
+    software: 300
 #Object properties
   president:
-     name: sb
-     age: 60
-     gender: \u6C49\u5B50
+    name: sb
+    age: 60
+    gender: \u6C49\u5B50
 
 
 #转换功能
