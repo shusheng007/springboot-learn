@@ -38,6 +38,7 @@
         <module>spring-security-mvc-inspect</module>
         <module>springdoc-integrate</module>
 <!--        <module>openfeign</module>-->
+        <module>log</module>
     </modules>
 
     <dependencies>
