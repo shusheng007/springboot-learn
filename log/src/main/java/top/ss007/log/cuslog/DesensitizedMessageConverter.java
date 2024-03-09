@@ -1,4 +1,4 @@
-package top.ss007.log;
+package top.ss007.log.cuslog;
 
 import ch.qos.logback.classic.pattern.MessageConverter;
 import ch.qos.logback.classic.spi.ILoggingEvent;
@@ -10,20 +10,24 @@ import java.util.regex.Pattern;
 public class DesensitizedMessageConverter extends MessageConverter {
 
     protected String regex = "-";
-    protected int depth = 0;
-    protected String policy = "-";
-    protected int maxLength = 2048;
+    protected int depth = 100;
+    protected String policy = "replace";
+    protected int maxLength = 10240;
     private ReplaceMatcher replaceMatcher = null;
 
     @Override
     public void start() {
         List<String> options = getOptionList();
         //如果存在参数选项，则提取
-        if (options != null && options.size() == 4) {
-            maxLength = Integer.valueOf(options.get(0));
-            regex = options.get(1);
-            policy = options.get(2);
-            depth = Integer.valueOf(options.get(3));
+        if (options != null) {
+            try {
+                maxLength = Integer.valueOf(options.get(0));
+                regex = options.get(1);
+                policy = options.get(2);
+                depth = Integer.valueOf(options.get(3));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
 
             if ((!"-".equals(regex))
                     && (PolicyEnum.fromName(policy) != PolicyEnum.UNKNOWN)
@@ -36,6 +40,7 @@ public class DesensitizedMessageConverter extends MessageConverter {
 
     @Override
     public String convert(ILoggingEvent event) {
+
         String source = event.getFormattedMessage();
         if (source == null || source.isEmpty()) {
             return source;
@@ -49,6 +54,8 @@ public class DesensitizedMessageConverter extends MessageConverter {
             if (isOutLengthLimit) {
                 sb.append(source, 0, maxLength)
                         .append("<<<");
+            } else {
+                sb.append(source);
             }
 
             if (replaceMatcher != null) {
@@ -101,14 +108,22 @@ public class DesensitizedMessageConverter extends MessageConverter {
                     return ">" + length + "<";
                 case REPLACE:
                     if (length > 10) {
-                        return sb.replace(3, length - 3, "*").toString();
+                        return sb.replace(3, length - 3, repeat('*', length - 6)).toString();
                     } else {
-                        return sb.replace(0, length, "*").toString();
+                        return sb.replace(0, length, repeat('*', length)).toString();
                     }
                 case ERASE:
                 default:
-                    return sb.replace(0, length, "*").toString();
+                    return sb.replace(0, length, repeat('*', length)).toString();
             }
+        }
+
+        private String repeat(char t, int times) {
+            char[] r = new char[times];
+            for (int i = 0; i < times; i++) {
+                r[i] = t;
+            }
+            return new String(r);
         }
 
     }

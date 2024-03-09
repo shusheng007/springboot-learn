@@ -14,11 +14,11 @@ public class WebController {
     @GetMapping("/check")
     public String log() {
         log.info("============");
-        log.info("-------------123456789abcdefg--------------");
+        log.info("-------------012345678901234567890123456789--------------");
 
 //        log.error("error",new NullPointerException("test"));
-//
 //        throw new RuntimeException("throw");
+
 
         return "ok";
     }

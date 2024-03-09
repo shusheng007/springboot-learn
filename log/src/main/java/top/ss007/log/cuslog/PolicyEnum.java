@@ -1,4 +1,4 @@
-package top.ss007.log;
+package top.ss007.log.cuslog;
 
 public enum PolicyEnum {
     REPLACE, DROP, ERASE, UNKNOWN;

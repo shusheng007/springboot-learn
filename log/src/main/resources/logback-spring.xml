@@ -1,47 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration scan="true">
     <springProperty scope="context" name="LOG_HOME" source="logging.file.path"/>
+    <springProperty scope="context" name="SERVICE_NAME" source="spring.application.name"/>
 
-    <conversionRule conversionWord="m" converterClass="top.ss007.log.DesensitizedMessageConverter"/>
+    <springProperty scope="context" name="LOG_CON_MAX_LIMIT" source="cus-log.properties.max-limit"/>
+    <springProperty scope="context" name="LOG_CON_POLICY" source="cus-log.properties.policy"/>
+    <springProperty scope="context" name="LOG_CON_REGEX" source="cus-log.properties.regex"/>
+    <property name="LOG_CON_DEPTH" value="100"/>
 
+
+    <conversionRule conversionWord="dmsg" converterClass="top.ss007.log.cuslog.DesensitizedMessageConverter"/>
     <conversionRule conversionWord="clr" converterClass="org.springframework.boot.logging.logback.ColorConverter"/>
     <conversionRule conversionWord="wex"
                     converterClass="org.springframework.boot.logging.logback.ExtendedWhitespaceThrowableProxyConverter"/>
 
     <property name="CONSOLE_LOG_PATTERN"
-              value="${CONSOLE_LOG_PATTERN:-%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} [%X{RequestId}] %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n ${LOG_EXCEPTION_CONVERSION_WORD:-%wex}}"/>
+              value="-%clr(%d{yyyy-MM-dd HH:mm:ss.SSS} | ${SERVICE_NAME}){faint} [%X{RequestId}] %clr(-%5p) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%-15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %dmsg{${LOG_CON_MAX_LIMIT},'${LOG_CON_REGEX}',${LOG_CON_POLICY},${LOG_CON_DEPTH}} %n -%wex"/>
+
+    <property name="FILE_LOG_PATTERN"
+              value="%d{yyyy-MM-dd HH:mm:ss.SSS} | ${SERVICE_NAME} [%X{RequestId}] [%thread] %-5level %logger{40} - %dmsg{${LOG_CON_MAX_LIMIT},'${LOG_CON_REGEX}',${LOG_CON_POLICY},${LOG_CON_DEPTH}} %n"/>
 
     <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
         <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
             <level>debug</level>
         </filter>
-        <!--        <encoder>-->
-        <!--            <Pattern>${CONSOLE_LOG_PATTERN}</Pattern>-->
-        <!--            <charset class="java.nio.charset.Charset">UTF-8</charset>-->
-        <!--        </encoder>-->
-
-        <encoder class="top.ss007.log.DesensitizedPatternLayoutEncoder">
-            <!--            <useDefaultRegex>true</useDefaultRegex>-->
-            <maxLength>1024</maxLength>
-            <policy>replace</policy>
-            <regex>123456789abcdefg</regex>
-            <policy>drop</policy>
-            <depth>2</depth>
+        <encoder>
+            <Pattern>${CONSOLE_LOG_PATTERN}</Pattern>
+            <charset class="java.nio.charset.Charset">UTF-8</charset>
         </encoder>
+
     </appender>
     <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <!--        <encoder>-->
-        <!--            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%X{RequestId}] [%thread] %-5level %logger{50} - %msg%n</pattern>-->
-        <!--            <charset class="java.nio.charset.Charset">UTF-8</charset>-->
-        <!--        </encoder>-->
-        <encoder class="top.ss007.log.DesensitizedPatternLayoutEncoder">
-            <!--            <useDefaultRegex>true</useDefaultRegex>-->
-            <maxLength>1024</maxLength>
-            <policy>replace</policy>
-            <regex>123</regex>
-            <policy>drop</policy>
-            <depth>2</depth>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%X{RequestId}] [%thread] %-5level %logger{50} - %msg%n</pattern>
+            <charset class="java.nio.charset.Charset">UTF-8</charset>
         </encoder>
+
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <fileNamePattern>${LOG_HOME}/charger-service-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
             <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
