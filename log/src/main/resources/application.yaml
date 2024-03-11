@@ -9,4 +9,6 @@ cus-log:
   properties:
     max-limit: 1024
     policy: REPLACE
-    regex: '012345'
+    regex: ((?<="userName":").*?(?=")|(?<="password":").*?(?="))
+
+
