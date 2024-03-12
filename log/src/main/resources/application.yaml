@@ -4,7 +4,6 @@ spring:
   application:
     name: log-service
 
-
 cus-log:
   properties:
     max-limit: 1024

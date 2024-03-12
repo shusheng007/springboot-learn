@@ -1,13 +1,15 @@
 package top.ss007.log.cuslog;
 
-import ch.qos.logback.classic.pattern.MessageConverter;
+import ch.qos.logback.classic.pattern.ClassicConverter;
 import ch.qos.logback.classic.spi.ILoggingEvent;
 
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class DesensitizedMessageConverter extends MessageConverter {
+import static top.ss007.log.cuslog.PolicyEnum.*;
+
+public class DesensitizedMessageConverter extends ClassicConverter {
 
     protected String regex = "-";
     protected int depth = 100;
@@ -21,8 +23,11 @@ public class DesensitizedMessageConverter extends MessageConverter {
         //如果存在参数选项，则提取
         if (options != null) {
             try {
-                maxLength = Integer.valueOf(options.get(0));
-                regex = options.get(1);
+                final Integer targetMaxLength = Integer.valueOf(options.get(0));
+                if (targetMaxLength > 125) {
+                    maxLength = targetMaxLength;
+                }
+
                 policy = options.get(2);
                 depth = Integer.valueOf(options.get(3));
             } catch (Exception e) {
@@ -78,8 +83,7 @@ public class DesensitizedMessageConverter extends MessageConverter {
         }
 
         public String execute(StringBuilder source, PolicyEnum policy) {
-
-            Matcher matcher = pattern.matcher(source);
+            Matcher matcher = pattern.matcher(source.toString());
 
             int depthCounter = 0;
             while (matcher.find() && (depthCounter < depth)) {
@@ -91,31 +95,36 @@ public class DesensitizedMessageConverter extends MessageConverter {
                 }
                 //匹配到的数据
                 String group = matcher.group();
-                source.replace(start, end, facade(group, policy));
+                String facadeStr = facade(group, policy);
+                source.replace(start, end, facadeStr);
             }
             return source.toString();
         }
 
-        /**
-         * 混淆，但是不改变字符串的长度
-         */
+
         private String facade(String source, PolicyEnum policy) {
             final int length = source.length();
             StringBuilder sb = new StringBuilder(source);
 
-            switch (policy) {
-                case DROP:
-                    return ">" + length + "<";
-                case REPLACE:
-                    if (length > 10) {
-                        return sb.replace(3, length - 3, repeat('*', length - 6)).toString();
-                    } else {
-                        return sb.replace(0, length, repeat('*', length)).toString();
-                    }
-                case ERASE:
-                default:
-                    return sb.replace(0, length, repeat('*', length)).toString();
+            if (policy == DROP) {
+                return ">" + length + "<";
             }
+            if (policy == REPLACE) {
+                if (length > 128) {
+                    return sb.replace(3, length - 3, String.format("[%s]", length - 6)).toString();
+                }
+                if (length > 10) {
+                    return sb.replace(3, length - 3, repeat('*', length - 6)).toString();
+                }
+            }
+
+            if (policy == ERASE) {
+                if (length > 128) {
+                    return sb.replace(0, length, String.format("[%s]", length - 6)).toString();
+                }
+            }
+
+            return sb.replace(0, length, repeat('*', length)).toString();
         }
 
         private String repeat(char t, int times) {
