@@ -1,0 +1,20 @@
+feign:
+  httpclient:
+    disable-ssl-validation: true
+  okhttp:
+    enabled: true
+  client:
+    config:
+      default:
+        connectTimeout: 20000
+        readTimeout: 30000
+        loggerLevel: full
+
+logging:
+  level:
+    com.volvo.energy.vecr.core.log.feign.TunedSlf4jLogger: debug
+
+
+cus-log:
+  feign:
+    request-headers: Authorization
