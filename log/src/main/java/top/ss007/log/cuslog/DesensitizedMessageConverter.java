@@ -20,14 +20,14 @@ public class DesensitizedMessageConverter extends ClassicConverter {
     @Override
     public void start() {
         List<String> options = getOptionList();
-        //如果存在参数选项，则提取
+        //从参数选项中提取配置
         if (options != null) {
             try {
                 final Integer targetMaxLength = Integer.valueOf(options.get(0));
                 if (targetMaxLength > 125) {
                     maxLength = targetMaxLength;
                 }
-
+                regex = options.get(1);
                 policy = options.get(2);
                 depth = Integer.valueOf(options.get(3));
             } catch (Exception e) {
@@ -94,9 +94,7 @@ public class DesensitizedMessageConverter extends ClassicConverter {
                     break;
                 }
                 //匹配到的数据
-                String group = matcher.group();
-                String facadeStr = facade(group, policy);
-                source.replace(start, end, facadeStr);
+                source.replace(start, end, facade(matcher.group(), policy));
             }
             return source.toString();
         }

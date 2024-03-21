@@ -1,5 +1,5 @@
 server:
-  port: 8002
+  port: 8080
 spring:
   application:
     name: log-service
@@ -8,6 +8,6 @@ cus-log:
   properties:
     max-limit: 1024
     policy: REPLACE
-    regex: ((?<="userName":").*?(?=")|(?<="password":").*?(?="))
+    regex: ((?<="username":").*?(?=")|(?<="password":").*?(?="))
 
 
