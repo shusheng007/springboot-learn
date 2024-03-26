@@ -2,9 +2,9 @@ package top.ss007.jpademo.entity;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import lombok.*;
+import jakarta.persistence.*;
+import lombok.Data;
 
-import javax.persistence.*;
 import java.util.List;
 
 

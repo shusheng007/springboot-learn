@@ -35,7 +35,7 @@ public class ValidateController {
 
 throw:
 
-javax.validation.ConstraintViolationException
+jakarta.validation.ConstraintViolationException
 
 
 

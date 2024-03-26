@@ -5,18 +5,19 @@
     <parent>
         <groupId>top.ss007</groupId>
         <artifactId>spring-learn</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
+        <version>${revision}</version>
     </parent>
 
     <groupId>top.ss007</groupId>
     <artifactId>spring-security-mvc-inspect</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
     <name>spring-security-mvc-inspect</name>
     <description>spring-security-mvc-inspect</description>
+
     <properties>
-        <java.version>11</java.version>
-        <hutool-jwt.version>5.8.11</hutool-jwt.version>
+
     </properties>
+
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -32,7 +33,6 @@
         <dependency>
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-jwt</artifactId>
-            <version>${hutool-jwt.version}</version>
         </dependency>
     </dependencies>
 

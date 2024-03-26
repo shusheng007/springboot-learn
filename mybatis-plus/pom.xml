@@ -5,17 +5,18 @@
     <parent>
         <groupId>top.ss007</groupId>
         <artifactId>spring-learn</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
+        <version>${revision}</version>
     </parent>
     <groupId>top.shusheng007</groupId>
     <artifactId>mybatis-plus</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
     <name>mybatis-plus</name>
     <description>Demo project for Spring Boot</description>
+
+
     <properties>
-        <java.version>1.8</java.version>
         <mybatis-plus.version>3.5.3.1</mybatis-plus.version>
     </properties>
+
     <dependencies>
 
     <dependency>
@@ -42,11 +43,7 @@
             <artifactId>spring-boot-configuration-processor</artifactId>
             <optional>true</optional>
         </dependency>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <optional>true</optional>
-        </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>

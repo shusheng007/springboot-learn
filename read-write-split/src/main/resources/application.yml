@@ -16,4 +16,4 @@ mybatis:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 logging:
   level:
-    top.shusheng007.readwritesplit.demo.persistence.mapper: debug
+    top.ss007.readwritesplit.demo.persistence.mapper: debug

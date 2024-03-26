@@ -1,9 +1,9 @@
 package top.ss007.springdoc.service;
 
+import jakarta.annotation.PostConstruct;
 import org.springframework.stereotype.Service;
 import top.ss007.springdoc.entity.Programmer;
 
-import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
 

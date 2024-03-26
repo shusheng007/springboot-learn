@@ -1,13 +1,9 @@
 package top.ss007.jpademo.entity;
 
 
+import jakarta.persistence.*;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
-import org.springframework.context.event.EventListener;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import javax.persistence.*;
 
 
 @Data

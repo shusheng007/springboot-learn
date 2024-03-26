@@ -5,19 +5,19 @@
     <parent>
         <groupId>top.ss007</groupId>
         <artifactId>spring-learn</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
+        <version>${revision}</version>
     </parent>
+
     <groupId>top.shusheng007</groupId>
     <artifactId>rabbitmq-integrate</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
     <name>rabbitmq-integrate</name>
     <description>Demo project for rabbit mq</description>
+
     <properties>
-        <java.version>1.8</java.version>
+
     </properties>
+
     <dependencies>
-
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-amqp</artifactId>

@@ -5,18 +5,17 @@
     <parent>
         <groupId>top.ss007</groupId>
         <artifactId>spring-learn</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
+        <version>${revision}</version>
     </parent>
 
-    <groupId>top.shusheng007</groupId>
+    <groupId>top.ss007</groupId>
     <artifactId>composite</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
     <name>composite</name>
     <description>Demo project for Spring Boot</description>
 
 
     <properties>
-        <java.version>11</java.version>
+        <java.version>17</java.version>
         <git-commit-id-maven-plugin.version>7.0.0</git-commit-id-maven-plugin.version>
     </properties>
 
@@ -26,10 +25,15 @@
             <artifactId>spring-boot-starter-validation</artifactId>
         </dependency>
 
+        <!--        <dependency>-->
+        <!--            <groupId>org.apache.httpcomponents</groupId>-->
+        <!--            <artifactId>httpclient</artifactId>-->
+        <!--        </dependency>-->
         <dependency>
-            <groupId>org.apache.httpcomponents</groupId>
-            <artifactId>httpclient</artifactId>
+            <groupId>org.apache.httpcomponents.client5</groupId>
+            <artifactId>httpclient5</artifactId>
         </dependency>
+
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-tx</artifactId>

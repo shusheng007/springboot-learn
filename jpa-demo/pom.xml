@@ -5,21 +5,19 @@
     <parent>
         <groupId>top.ss007</groupId>
         <artifactId>spring-learn</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
+        <version>${revision}</version>
     </parent>
 
     <groupId>top.ss007</groupId>
     <artifactId>jpa-demo</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
     <name>jpa-demo</name>
     <description>jpa-demo</description>
 
     <properties>
-        <java.version>11</java.version>
+
     </properties>
 
     <dependencies>
-
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
