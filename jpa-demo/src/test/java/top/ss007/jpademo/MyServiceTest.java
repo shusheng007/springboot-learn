@@ -1,10 +1,6 @@
 package top.ss007.jpademo;
 
-import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.transaction.annotation.Transactional;
-import top.ss007.jpademo.service.MyService;
 
 @SpringBootTest
 class MyServiceTest {

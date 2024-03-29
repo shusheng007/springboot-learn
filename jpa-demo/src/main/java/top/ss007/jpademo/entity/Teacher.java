@@ -2,20 +2,19 @@ package top.ss007.jpademo.entity;
 
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.List;
 
-@Data
+@Setter
+@Getter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "teacher")
-public class Teacher {
+@Table(name = "teacher", schema = "jpa-learn")
+public class Teacher extends AbstractAuditingEntity {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
@@ -24,7 +23,10 @@ public class Teacher {
     @Column(name = "name")
     private String name;
 
-    @ManyToMany(mappedBy = "teachers",cascade = CascadeType.ALL)
+    @Column(name = "number")
+    private String number;
+
+    @ManyToMany(mappedBy = "teachers")
     private List<Student> students;
 
 

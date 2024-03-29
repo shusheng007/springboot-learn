@@ -2,13 +2,14 @@ package top.ss007.jpademo.entity;
 
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 
-
-@Data
+@Setter
+@Getter
 @Entity
-@Table(name = "account")
+@Table(name = "account", schema = "jpa-learn")
 public class Account extends AbstractAuditable<Long>{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,7 +22,7 @@ public class Account extends AbstractAuditable<Long>{
     @Column(name = "password")
     private String password;
 
-    @OneToOne(mappedBy = "account", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "account")
     private Student student;
 
     @Version

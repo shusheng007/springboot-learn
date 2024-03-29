@@ -1,4 +1,4 @@
-package top.ss007.jpademo;
+package top.ss007.jpademo.service.impl;
 
 import org.springframework.data.domain.AuditorAware;
 

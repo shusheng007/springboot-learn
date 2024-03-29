@@ -31,6 +31,7 @@
         <spring-doc.version>2.1.0</spring-doc.version>
         <apache-httpclient.version>4.5.14</apache-httpclient.version>
         <apache-httpclient5.version>5.3.1</apache-httpclient5.version>
+        <jpamodelgen.version>6.3.2.Final</jpamodelgen.version>
         <spring-cloud.version>2022.0.3</spring-cloud.version>
     </properties>
 
@@ -78,7 +79,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <optional>true</optional>
+            <scope>provided</scope>
         </dependency>
 
         <dependency>
@@ -140,6 +141,12 @@
                 <groupId>org.apache.httpcomponents.client5</groupId>
                 <artifactId>httpclient5</artifactId>
                 <version>${apache-httpclient5.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.hibernate.orm</groupId>
+                <artifactId>hibernate-jpamodelgen</artifactId>
+                <version>${jpamodelgen.version}</version>
             </dependency>
 
         </dependencies>

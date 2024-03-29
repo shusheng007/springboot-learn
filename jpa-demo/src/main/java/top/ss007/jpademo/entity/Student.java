@@ -3,15 +3,17 @@ package top.ss007.jpademo.entity;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.List;
 
 
-@Data
+@Setter
+@Getter
 @Entity
-@Table(name = "student", schema = "public")
-public class Student {
+@Table(name = "student", schema = "jpa-learn")
+public class Student extends AbstractAuditingEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,15 +23,18 @@ public class Student {
     @Column(name = "stu_name")
     private String name;
 
+    @Column(name = "stu_number")
+    private String number;
+
     @OneToOne(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY, orphanRemoval = false)
     @JoinColumn(name = "account_id")
     private Account account;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne()
     @JoinColumn(name = "school_id")
     private School school;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = {CascadeType.ALL})
     @JoinTable(name = "student_teacher_relation",
             joinColumns = @JoinColumn(name = "student_id"),
             inverseJoinColumns = @JoinColumn(name = "teacher_id"))
