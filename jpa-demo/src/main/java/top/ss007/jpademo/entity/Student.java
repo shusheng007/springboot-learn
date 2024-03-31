@@ -1,7 +1,5 @@
 package top.ss007.jpademo.entity;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -26,6 +24,9 @@ public class Student extends AbstractAuditingEntity {
     @Column(name = "stu_number")
     private String number;
 
+    @Column(name = "age")
+    private Integer age;
+
     @OneToOne(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY, orphanRemoval = false)
     @JoinColumn(name = "account_id")
     private Account account;
@@ -41,11 +42,4 @@ public class Student extends AbstractAuditingEntity {
     private List<Teacher> teachers;
 
 
-    public String toJson() {
-        try {
-            return new ObjectMapper().writeValueAsString(this);
-        } catch (JsonProcessingException e) {
-            throw new RuntimeException(e);
-        }
-    }
 }

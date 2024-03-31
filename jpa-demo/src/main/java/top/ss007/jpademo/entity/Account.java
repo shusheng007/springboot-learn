@@ -11,6 +11,7 @@ import lombok.Setter;
 @Entity
 @Table(name = "account", schema = "jpa-learn")
 public class Account extends AbstractAuditable<Long>{
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
