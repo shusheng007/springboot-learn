@@ -37,7 +37,7 @@ public class DemoService {
         try {
             log.info("插入学生:{}",new ObjectMapper().writeValueAsString(student));
         } catch (JsonProcessingException e) {
-            e.printStackTrace();
+            log.error("json error", e);
         }
         return student;
     }
@@ -48,7 +48,7 @@ public class DemoService {
         try {
             log.info("获取学生列表:{}",new ObjectMapper().writeValueAsString(list));
         } catch (JsonProcessingException e) {
-            e.printStackTrace();
+            log.error("json error", e);
         }
         return list;
     }

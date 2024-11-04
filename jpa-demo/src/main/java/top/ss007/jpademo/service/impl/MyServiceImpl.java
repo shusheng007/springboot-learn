@@ -80,8 +80,6 @@ public class MyServiceImpl implements MyService {
         teacherRepository.findByNumber("TEA0001").ifPresent(t -> wuXue.setTeachers(List.of(t)));
         schoolRepository.findByName("BIT").ifPresent(s -> wuXue.setSchool(s));
 
-        studentRepository.saveAndFlush(wuXue);
-
         return wuXue;
     }
 

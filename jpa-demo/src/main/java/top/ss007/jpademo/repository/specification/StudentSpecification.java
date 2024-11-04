@@ -1,8 +1,7 @@
 package top.ss007.jpademo.repository.specification;
 
 import cn.hutool.core.util.StrUtil;
-import jakarta.persistence.criteria.Join;
-import jakarta.persistence.criteria.Predicate;
+import jakarta.persistence.criteria.*;
 import lombok.experimental.UtilityClass;
 import org.springframework.data.jpa.domain.Specification;
 import top.ss007.jpademo.entity.Student;
@@ -17,7 +16,12 @@ public class StudentSpecification {
     }
 
     public static Specification<Student> hasNumber(String number) {
-        return (root, query, criteriaBuilder) -> criteriaBuilder.equal(root.get(Student_.number), number);
+        return new Specification<Student>() {
+            @Override
+            public Predicate toPredicate(Root<Student> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
+                return criteriaBuilder.equal(root.get(Student_.number), number);
+            }
+        };
     }
 
     public static Specification<Student> ageBetween(Integer minAge, Integer maxAge) {
@@ -34,6 +38,5 @@ public class StudentSpecification {
             return criteriaBuilder.equal(stuTeachers.get(Teacher_.name), teacher);
         };
     }
-
 
 }

@@ -11,16 +11,16 @@ import static top.ss007.log.cuslog.PolicyEnum.*;
 
 public class DesensitizedMessageConverter extends ClassicConverter {
 
-    protected String regex = "-";
+    protected String regex;
     protected int depth = 100;
-    protected String policy = "replace";
+    protected String policy = "REPLACE";
     protected int maxLength = 10240;
     private ReplaceMatcher replaceMatcher = null;
 
     @Override
     public void start() {
         List<String> options = getOptionList();
-        //从参数选项中提取配置
+        //read config from option list.
         if (options != null) {
             try {
                 final Integer targetMaxLength = Integer.valueOf(options.get(0));
@@ -34,7 +34,7 @@ public class DesensitizedMessageConverter extends ClassicConverter {
                 e.printStackTrace();
             }
 
-            if ((!"-".equals(regex))
+            if ((!"NA".equalsIgnoreCase(regex))
                     && (PolicyEnum.fromName(policy) != PolicyEnum.UNKNOWN)
                     && depth > 0) {
                 replaceMatcher = new ReplaceMatcher(regex, depth);
@@ -54,8 +54,8 @@ public class DesensitizedMessageConverter extends ClassicConverter {
         int length = source.length();
         boolean isOutLengthLimit = length > maxLength;
         if (isOutLengthLimit || replaceMatcher != null) {
-            StringBuilder sb = new StringBuilder(isOutLengthLimit ? maxLength + 6 : length + 6);
-            //超长截取
+            StringBuilder sb = new StringBuilder(isOutLengthLimit ? maxLength + 6 : length);
+            //cut to length limit
             if (isOutLengthLimit) {
                 sb.append(source, 0, maxLength)
                         .append("<<<");
@@ -93,7 +93,6 @@ public class DesensitizedMessageConverter extends ClassicConverter {
                 if (start < 0 || end < 0) {
                     break;
                 }
-                //匹配到的数据
                 source.replace(start, end, facade(matcher.group(), policy));
             }
             return source.toString();
