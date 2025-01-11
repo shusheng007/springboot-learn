@@ -1,10 +1,12 @@
 # 概述
 
-本项目为日常工作及学习中=中整理的博客对应的源码，希望对朋友们有帮助
+本项目为本人日常工作及学习中整理的技术博客对应的源码，希望对后辈有帮助，如果后辈学到后也给前辈们留口饭吃，大家和谐共生，幸福安康。
+
+> 应该结合博客使用  [ShuSheng007的技术博客](https://blog.shusheng007.top)
 
 # 结构
 
-每个第三方技术的使用都会以模块的形式存在
+每个第三方技术的使用都以模块的形式存在
 
 - jpa-demo
 
@@ -12,15 +14,15 @@ jpa 相关的代码
 
 - mvc-inspect
 
-SpringMvc原理学习文章的源码，包括Spring各种扩展点的检视
+SpringMvc原理简析，包括Spring各种扩展点的检视
 
 - mybatis-plus
 
-Mybatis-Plus与springboot的集成和使用
+Mybatis-Plus与SpringBoot的集成和使用
 
 - rabbitmq-integrate
 
-RabbitMq与springboot的集成和使用
+RabbitMq与SpringBoot的集成和使用
 
 - read-write-split
 
@@ -28,7 +30,7 @@ RabbitMq与springboot的集成和使用
 
 - redis-integrate
 
-Redis与springboot的集成和使用
+Redis与SpringBoot的集成和使用
 
 - sc-stream
 
@@ -44,7 +46,11 @@ Java Bean转换利器MapStruct的使用
 
 - springdoc-integrate
 
-Springdoc与springboot的集成与使用
+Springdoc与SpringBoot的集成与使用
+
+- log
+
+基于logback实现的日志超长截取和脱敏的实用方案
 
 - composite
 

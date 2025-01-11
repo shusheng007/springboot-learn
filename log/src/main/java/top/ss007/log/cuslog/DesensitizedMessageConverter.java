@@ -7,7 +7,8 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static top.ss007.log.cuslog.PolicyEnum.*;
+import static top.ss007.log.cuslog.HandlePolicy.DROP;
+import static top.ss007.log.cuslog.HandlePolicy.REPLACE;
 
 public class DesensitizedMessageConverter extends ClassicConverter {
 
@@ -35,7 +36,7 @@ public class DesensitizedMessageConverter extends ClassicConverter {
             }
 
             if ((!"NA".equalsIgnoreCase(regex))
-                    && (PolicyEnum.fromName(policy) != PolicyEnum.UNKNOWN)
+                    && (HandlePolicy.fromName(policy) != HandlePolicy.UNKNOWN)
                     && depth > 0) {
                 replaceMatcher = new ReplaceMatcher(regex, depth);
             }
@@ -64,7 +65,7 @@ public class DesensitizedMessageConverter extends ClassicConverter {
             }
 
             if (replaceMatcher != null) {
-                return replaceMatcher.execute(sb, PolicyEnum.fromName(policy));
+                return replaceMatcher.execute(sb, HandlePolicy.fromName(policy));
             }
 
             return sb.toString();
@@ -82,7 +83,7 @@ public class DesensitizedMessageConverter extends ClassicConverter {
             this.depth = depth;
         }
 
-        public String execute(StringBuilder source, PolicyEnum policy) {
+        public String execute(StringBuilder source, HandlePolicy policy) {
             Matcher matcher = pattern.matcher(source.toString());
 
             int depthCounter = 0;
@@ -99,7 +100,7 @@ public class DesensitizedMessageConverter extends ClassicConverter {
         }
 
 
-        private String facade(String source, PolicyEnum policy) {
+        private String facade(String source, HandlePolicy policy) {
             final int length = source.length();
             StringBuilder sb = new StringBuilder(source);
 
@@ -114,20 +115,13 @@ public class DesensitizedMessageConverter extends ClassicConverter {
                     return sb.replace(3, length - 3, repeat('*', length - 6)).toString();
                 }
             }
-
-            if (policy == ERASE) {
-                if (length > 128) {
-                    return sb.replace(0, length, String.format("[%s]", length - 6)).toString();
-                }
-            }
-
             return sb.replace(0, length, repeat('*', length)).toString();
         }
 
-        private String repeat(char t, int times) {
+        private String repeat(char markSign, int times) {
             char[] r = new char[times];
             for (int i = 0; i < times; i++) {
-                r[i] = t;
+                r[i] = markSign;
             }
             return new String(r);
         }

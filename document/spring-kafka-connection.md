@@ -66,8 +66,8 @@ client的证书文件
 下面的配置为，客户端验证服务端。顾名思义，trust-store-xxx, 即客户端用来信任外来连接的凭证
 trust-store-type: PEM
 
-client的store使用PEM类型，
+用来信任服务端的store使用PEM类型，
 
 trust-store-certificates: file:/cert/server-cert.pem
-key-store-type: PEM
-key-store-certificate-chain 填客户端.pem证书文件
+
+服务器证书链
