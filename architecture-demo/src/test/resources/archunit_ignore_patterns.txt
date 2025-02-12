@@ -1,0 +1,2 @@
+# ignore TestController
+.*com\.volvo\.energy\.eros\.userservice\.facade\.controller\.TestController.*

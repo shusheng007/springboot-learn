@@ -33,6 +33,8 @@
         <apache-httpclient5.version>5.3.1</apache-httpclient5.version>
         <jpamodelgen.version>6.3.2.Final</jpamodelgen.version>
         <spring-cloud.version>2022.0.3</spring-cloud.version>
+        <archunit-junit5.version>1.3.0</archunit-junit5.version>
+
     </properties>
 
     <modules>
@@ -49,6 +51,7 @@
         <module>springdoc-integrate</module>
         <module>openfeign</module>
         <module>log</module>
+        <module>architecture-demo</module>
     </modules>
 
     <dependencies>
@@ -123,18 +126,11 @@
                 <version>${hutool-jwt.version}</version>
             </dependency>
 
-            <!--            <dependency>-->
-            <!--                <groupId>org.springdoc</groupId>-->
-            <!--                <artifactId>springdoc-openapi-ui</artifactId>-->
-            <!--                <version>${spring-doc.version}</version>-->
-            <!--            </dependency>-->
-
             <dependency>
                 <groupId>org.springdoc</groupId>
                 <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
                 <version>${spring-doc.version}</version>
             </dependency>
-
 
             <!-- https://mvnrepository.com/artifact/org.apache.httpcomponents.client5/httpclient5 -->
             <dependency>
@@ -149,9 +145,15 @@
                 <version>${jpamodelgen.version}</version>
             </dependency>
 
+            <dependency>
+                <groupId>com.tngtech.archunit</groupId>
+                <artifactId>archunit-junit5</artifactId>
+                <version>${archunit-junit5.version}</version>
+                <scope>test</scope>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
-
 
     <build>
         <plugins>
