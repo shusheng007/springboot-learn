@@ -1,17 +1,18 @@
 package top.ss007.jpademo.entity;
 
 
-import lombok.Data;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.*;
 import java.util.List;
 
-@Data
+@Setter
+@Getter
 @Entity
-@Table(name = "school")
-public class School {
+@Table(name = "school", schema = "jpa-learn")
+public class School extends AbstractAuditingEntity {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
@@ -22,4 +23,6 @@ public class School {
 
     @OneToMany(mappedBy = "school", cascade = CascadeType.ALL)
     private List<Student> students;
+
+
 }

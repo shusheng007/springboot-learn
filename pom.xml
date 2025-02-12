@@ -5,24 +5,36 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.7.11</version>
+        <version>3.1.6</version>
         <relativePath/>
     </parent>
 
     <groupId>top.ss007</groupId>
     <artifactId>spring-learn</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>${revision}</version>
     <packaging>pom</packaging>
     <name>spring-learn</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
-        <java.version>11</java.version>
+        <java.version>17</java.version>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <revision>0.0.1-SNAPSHOT</revision>
+
         <maven.plugin.version>3.8.1</maven.plugin.version>
-        <hutool-core.version>5.8.18</hutool-core.version>
-        <hutool-json.version>5.8.18</hutool-json.version>
-        <spring-cloud.version>2021.0.5</spring-cloud.version>
+        <hutool-core.version>5.8.26</hutool-core.version>
+        <hutool-json.version>5.8.26</hutool-json.version>
+        <hutool-jwt.version>5.8.26</hutool-jwt.version>
+        <spring-doc.version>2.1.0</spring-doc.version>
+        <apache-httpclient.version>4.5.14</apache-httpclient.version>
+        <apache-httpclient5.version>5.3.1</apache-httpclient5.version>
+        <jpamodelgen.version>6.3.2.Final</jpamodelgen.version>
+        <spring-cloud.version>2022.0.3</spring-cloud.version>
+        <archunit-junit5.version>1.3.0</archunit-junit5.version>
+
     </properties>
 
     <modules>
@@ -39,6 +51,7 @@
         <module>springdoc-integrate</module>
         <module>openfeign</module>
         <module>log</module>
+        <module>architecture-demo</module>
     </modules>
 
     <dependencies>
@@ -69,7 +82,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <optional>true</optional>
+            <scope>provided</scope>
         </dependency>
 
         <dependency>
@@ -106,9 +119,41 @@
                 <artifactId>hutool-json</artifactId>
                 <version>${hutool-json.version}</version>
             </dependency>
+
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-jwt</artifactId>
+                <version>${hutool-jwt.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springdoc</groupId>
+                <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+                <version>${spring-doc.version}</version>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/org.apache.httpcomponents.client5/httpclient5 -->
+            <dependency>
+                <groupId>org.apache.httpcomponents.client5</groupId>
+                <artifactId>httpclient5</artifactId>
+                <version>${apache-httpclient5.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.hibernate.orm</groupId>
+                <artifactId>hibernate-jpamodelgen</artifactId>
+                <version>${jpamodelgen.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.tngtech.archunit</groupId>
+                <artifactId>archunit-junit5</artifactId>
+                <version>${archunit-junit5.version}</version>
+                <scope>test</scope>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
-
 
     <build>
         <plugins>

@@ -2,7 +2,7 @@ spring:
   application:
     name: jap-demo
   datasource:
-    url: jdbc:postgresql://localhost:5432/postgres?currentSchema=public,jpa-db
+    url: jdbc:postgresql://localhost:5432/postgres?currentSchema=public,jpa-learn
     username: postgres
     password: pgsql
     driver-class-name: org.postgresql.Driver
@@ -10,7 +10,7 @@ spring:
       maximum-pool-size: 2
   jpa:
 #    show-sql: true
-    generate-ddl: true
+    generate-ddl: false
 
 #    open-in-view: false
 #    hibernate:
@@ -23,5 +23,7 @@ spring:
 logging:
   level:
     org.hibernate.SQL: DEBUG
-    org.hibernate.type.descriptor.sql: TRACE #JDBC parameters passed to a query
-#    org.hibernate.type: TRACE   #JDBC parameters passed to a query
+    org.hibernate.type.descriptor.sql: TRACE
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+    #    org.hibernate.type.descriptor.sql.BasicExtractor: OFF
+    org.hibernate.orm.jdbc.bind: TRACE
