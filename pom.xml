@@ -24,7 +24,7 @@
 
         <revision>0.0.1-SNAPSHOT</revision>
 
-        <maven.plugin.version>3.8.1</maven.plugin.version>
+        <maven.plugin.version>3.9.0</maven.plugin.version>
         <hutool-core.version>5.8.26</hutool-core.version>
         <hutool-json.version>5.8.26</hutool-json.version>
         <hutool-jwt.version>5.8.26</hutool-jwt.version>
