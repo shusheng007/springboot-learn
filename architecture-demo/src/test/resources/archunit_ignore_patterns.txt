@@ -1,2 +1,2 @@
 # ignore TestController
-.*com\.volvo\.energy\.eros\.userservice\.facade\.controller\.TestController.*
+.*top\.ss007\.architecturedemo\.facade\.controller\.TestController.*

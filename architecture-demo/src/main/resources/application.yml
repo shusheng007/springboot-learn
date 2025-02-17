@@ -1,1 +1,3 @@
-spring.application.name=architecture-demo
+spring:
+  application:
+    name: architecture-demo

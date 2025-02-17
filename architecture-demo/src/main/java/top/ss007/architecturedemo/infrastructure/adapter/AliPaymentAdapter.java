@@ -1,10 +1,10 @@
 package top.ss007.architecturedemo.infrastructure.adapter;
 
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 import top.ss007.architecturedemo.domain.external.PaymentPort;
 import top.ss007.architecturedemo.domain.valueobj.PaymentDetail;
 
-@Service
+@Component
 public class AliPaymentAdapter implements PaymentPort {
     @Override
     public boolean payOrder(Long orderId, PaymentDetail paymentDetail) {

@@ -5,12 +5,8 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class OrderItem {
+public class Product {
     private String productId;
-    private int quantity;
+    private String type;
     private double price;
-
-    public double getTotalPrice() {
-        return quantity * price;
-    }
 }
