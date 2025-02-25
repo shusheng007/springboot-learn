@@ -28,7 +28,7 @@
         <hutool-core.version>5.8.26</hutool-core.version>
         <hutool-json.version>5.8.26</hutool-json.version>
         <hutool-jwt.version>5.8.26</hutool-jwt.version>
-        <spring-doc.version>2.1.0</spring-doc.version>
+        <spring-doc.version>2.8.5</spring-doc.version>
         <apache-httpclient.version>4.5.14</apache-httpclient.version>
         <apache-httpclient5.version>5.3.1</apache-httpclient5.version>
         <jpamodelgen.version>6.3.2.Final</jpamodelgen.version>
@@ -126,6 +126,8 @@
                 <version>${hutool-jwt.version}</version>
             </dependency>
 
+
+            <!-- https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-starter-webmvc-ui -->
             <dependency>
                 <groupId>org.springdoc</groupId>
                 <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>

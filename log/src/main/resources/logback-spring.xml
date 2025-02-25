@@ -4,11 +4,12 @@
     <springProperty scope="context" name="SERVICE_NAME" source="spring.application.name"/>
 
     <springProperty scope="context" name="LOG_CON_MAX_LIMIT" source="cus-log.properties.max-limit"/>
-    <springProperty scope="context" name="LOG_CON_POLICY" source="cus-log.properties.policy"/>
     <springProperty scope="context" name="LOG_CON_REGEX" source="cus-log.properties.regex"/>
+    <springProperty scope="context" name="LOG_CON_PLAIN_MARKERS" source="cus-log.properties.plain-markers"/>
+    <property name="LOG_CON_POLICY" value="REPLACE"/>
     <property name="LOG_CON_DEPTH" value="100"/>
 
-    <property name="LOG_CON_SUM" value="'${LOG_CON_MAX_LIMIT}','${LOG_CON_REGEX}','${LOG_CON_POLICY}','${LOG_CON_DEPTH}'"/>
+    <property name="LOG_CON_SUM" value="'${LOG_CON_MAX_LIMIT}','${LOG_CON_REGEX}','${LOG_CON_POLICY}','${LOG_CON_DEPTH}','${LOG_CON_PLAIN_MARKERS}'"/>
 
 
     <conversionRule conversionWord="dmsg" converterClass="top.ss007.log.cuslog.DesensitizedMessageConverter"/>

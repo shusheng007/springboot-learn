@@ -2,51 +2,77 @@ package top.ss007.log.cuslog;
 
 import ch.qos.logback.classic.pattern.ClassicConverter;
 import ch.qos.logback.classic.spi.ILoggingEvent;
+import org.slf4j.Marker;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import static top.ss007.log.cuslog.HandlePolicy.DROP;
 import static top.ss007.log.cuslog.HandlePolicy.REPLACE;
 
+/**
+ *
+ */
 public class DesensitizedMessageConverter extends ClassicConverter {
 
-    protected String regex;
-    protected int depth = 100;
-    protected String policy = "REPLACE";
     protected int maxLength = 10240;
+    protected String regex;
+    protected HandlePolicy policy = REPLACE;
+    protected int depth = 100;
+
+    //the log with these marker will not be masked
+    protected List<String> plainMarkers = new ArrayList<>();
     private ReplaceMatcher replaceMatcher = null;
 
     @Override
     public void start() {
         List<String> options = getOptionList();
-        //read config from option list.
-        if (options != null) {
-            try {
-                final Integer targetMaxLength = Integer.valueOf(options.get(0));
-                if (targetMaxLength > 125) {
-                    maxLength = targetMaxLength;
-                }
-                regex = options.get(1);
-                policy = options.get(2);
-                depth = Integer.valueOf(options.get(3));
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-
-            if ((!"NA".equalsIgnoreCase(regex))
-                    && (HandlePolicy.fromName(policy) != HandlePolicy.UNKNOWN)
-                    && depth > 0) {
-                replaceMatcher = new ReplaceMatcher(regex, depth);
-            }
+        if (options == null || options.isEmpty()) {
+            super.start();
+            return;
         }
+
+        //read config from option list.
+        try {
+            final int size = options.size();
+            if (size >= 1) {
+                maxLength = Integer.valueOf(options.get(0));
+            }
+            if (size >= 2) {
+                regex = options.get(1);
+            }
+            if (size >= 3) {
+                policy = HandlePolicy.fromName(options.get(2));
+            }
+            if (size >= 4) {
+                Integer input = Integer.valueOf(options.get(3));
+                if (input > 0) {
+                    depth = input;
+                }
+            }
+            if (size >= 5) {
+                String markerStr = options.get(4);
+                if (Objects.nonNull(markerStr)) {
+                    plainMarkers.addAll(Arrays.stream(markerStr.split(",")).toList());
+                }
+            }
+        } catch (Exception e) {
+            addError("invalid parameters", e);
+        }
+
+        if (Objects.nonNull(regex) && !"NA".equalsIgnoreCase(regex)) {
+            replaceMatcher = new ReplaceMatcher(regex, depth);
+        }
+
         super.start();
     }
 
     @Override
     public String convert(ILoggingEvent event) {
-
         String source = event.getFormattedMessage();
         if (source == null || source.isEmpty()) {
             return source;
@@ -54,7 +80,7 @@ public class DesensitizedMessageConverter extends ClassicConverter {
 
         int length = source.length();
         boolean isOutLengthLimit = length > maxLength;
-        if (isOutLengthLimit || replaceMatcher != null) {
+        if (replaceMatcher != null || isOutLengthLimit) {
             StringBuilder sb = new StringBuilder(isOutLengthLimit ? maxLength + 6 : length);
             //cut to length limit
             if (isOutLengthLimit) {
@@ -64,14 +90,21 @@ public class DesensitizedMessageConverter extends ClassicConverter {
                 sb.append(source);
             }
 
-            if (replaceMatcher != null) {
-                return replaceMatcher.execute(sb, HandlePolicy.fromName(policy));
+            if (replaceMatcher != null && !isMarkAsPlainLog(event.getMarkerList())) {
+                return replaceMatcher.execute(sb, policy);
             }
 
             return sb.toString();
         }
 
         return source;
+    }
+
+    private boolean isMarkAsPlainLog(List<Marker> markerList) {
+        if (markerList == null || markerList.isEmpty()) {
+            return false;
+        }
+        return plainMarkers.contains(markerList.get(0).getName());
     }
 
     public static class ReplaceMatcher {

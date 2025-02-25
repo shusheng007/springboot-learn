@@ -10,8 +10,9 @@
 
 ## architecture-demo
 
-六边形架构与洋葱圈架构以及DDD的实例
+软件架构解析
 
+- [六边形架构与洋葱圈架构详解以及DDD的实例](https://blog.shusheng007.top/archives/architecture-hexagonal-onion)
 
 
 ## jpa-demo
@@ -84,7 +85,7 @@ Swagger最新工具Springdoc与SpringBoot的集成与使用
 
 - [秒懂SpringBoot之如何使用logback实现日志的脱敏和截取](https://blog.shusheng007.top/archives/logback-desensitized)
 
-- composite
+## composite
 
 这是一个综合体，里面包含了各种java小技巧的使用
 
