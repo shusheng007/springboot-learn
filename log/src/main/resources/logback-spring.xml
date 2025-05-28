@@ -12,7 +12,7 @@
     <property name="LOG_CON_SUM" value="'${LOG_CON_MAX_LIMIT}','${LOG_CON_REGEX}','${LOG_CON_POLICY}','${LOG_CON_DEPTH}','${LOG_CON_PLAIN_MARKERS}'"/>
 
 
-    <conversionRule conversionWord="dmsg" converterClass="top.ss007.log.cuslog.DesensitizedMessageConverter"/>
+    <conversionRule conversionWord="dmsg" converterClass="top.ss007.safelog.logback.DesensitizeConverter"/>
     <conversionRule conversionWord="clr" converterClass="org.springframework.boot.logging.logback.ColorConverter"/>
     <conversionRule conversionWord="wex"
                     converterClass="org.springframework.boot.logging.logback.ExtendedWhitespaceThrowableProxyConverter"/>
