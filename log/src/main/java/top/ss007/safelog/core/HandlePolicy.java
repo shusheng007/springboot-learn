@@ -1,4 +1,4 @@
-package top.ss007.log.cuslog;
+package top.ss007.safelog.core;
 
 import java.util.Arrays;
 

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+    <Properties>
+        <Property name="SERVICE_NAME">${spring:spring.application.name}</Property>
+
+        <Property name="REGEX">${cus-log.properties.regex:-NA}</Property>
+        <Property name="DEPTH">100</Property>
+        <Property name="POLICY">${cus-log.properties.policy:-REPLACE}</Property>
+        <Property name="MAX_LENGTH">${cus-log.properties.max-limit:-10240}</Property>
+        <Property name="PLAIN_MARKERS">${cus-log.properties.plain-markers}</Property>
+
+        <Property name="CONSOLE_LOG_PATTERN">
+            %d{yyyy-MM-dd HH:mm:ss.SSS} | ${SERVICE_NAME} [%-32.32X{RequestId}] [%-20.20thread] %-5level
+            %-40.40logger{40} : %msg%n
+        </Property>
+    </Properties>
+
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="${CONSOLE_LOG_PATTERN}"/>
+            <Filters>
+                <ThresholdFilter level="debug"/>
+            </Filters>
+        </Console>
+        <Rewrite name="DesensitizeRewriter">
+            <AppenderRef ref="Console"/>
+            <DesensitizeRewritePolicy
+                    regex="${REGEX}"
+                    depth="${DEPTH}"
+                    policy="${POLICY}"
+                    maxLength="${MAX_LENGTH}"
+                    plainMarkers="${PLAIN_MARKERS}"/>
+        </Rewrite>
+    </Appenders>
+
+    <Loggers>
+        <AsyncRoot level="info">
+            <AppenderRef ref="DesensitizeRewriter"/>
+        </AsyncRoot>
+    </Loggers>
+</Configuration>

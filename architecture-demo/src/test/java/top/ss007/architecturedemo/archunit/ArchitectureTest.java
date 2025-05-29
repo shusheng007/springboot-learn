@@ -11,7 +11,6 @@ import static com.tngtech.archunit.library.Architectures.layeredArchitecture;
 @AnalyzeClasses(packages = {"top.ss007.architecturedemo"}, importOptions = {
         ImportOption.DoNotIncludeTests.class})
 public class ArchitectureTest {
-
     private static final String FACADE_LAYER = "Facade";
     private static final String INFRASTRUCTURE_LAYER = "Infrastructure";
     private static final String APPLICATION_LAYER = "Application";

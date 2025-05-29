@@ -3,22 +3,22 @@
     <springProperty scope="context" name="LOG_HOME" source="logging.file.path"/>
     <springProperty scope="context" name="SERVICE_NAME" source="spring.application.name"/>
 
-    <springProperty scope="context" name="LOG_CON_MAX_LIMIT" source="cus-log.properties.max-limit"/>
     <springProperty scope="context" name="LOG_CON_REGEX" source="cus-log.properties.regex"/>
+    <springProperty scope="context" name="LOG_CON_MAX_LIMIT" source="cus-log.properties.max-limit"/>
     <springProperty scope="context" name="LOG_CON_PLAIN_MARKERS" source="cus-log.properties.plain-markers"/>
     <property name="LOG_CON_POLICY" value="REPLACE"/>
     <property name="LOG_CON_DEPTH" value="100"/>
 
-    <property name="LOG_CON_SUM" value="'${LOG_CON_MAX_LIMIT}','${LOG_CON_REGEX}','${LOG_CON_POLICY}','${LOG_CON_DEPTH}','${LOG_CON_PLAIN_MARKERS}'"/>
+    <property name="LOG_CON_SUM"
+              value="'${LOG_CON_REGEX}','${LOG_CON_MAX_LIMIT}','${LOG_CON_POLICY}','${LOG_CON_PLAIN_MARKERS}','${LOG_CON_DEPTH}'"/>
+    <!--    <property name="LOG_CON_SUM" value="'${LOG_CON_REGEX}','${LOG_CON_MAX_LIMIT}'"/>-->
 
 
-    <conversionRule conversionWord="dmsg" converterClass="top.ss007.log.cuslog.DesensitizedMessageConverter"/>
-    <conversionRule conversionWord="clr" converterClass="org.springframework.boot.logging.logback.ColorConverter"/>
-    <conversionRule conversionWord="wex"
-                    converterClass="org.springframework.boot.logging.logback.ExtendedWhitespaceThrowableProxyConverter"/>
+    <conversionRule conversionWord="dmsg" converterClass="top.ss007.safelog.logback.DesensitizeConverter"/>
+
 
     <property name="CONSOLE_LOG_PATTERN"
-              value="%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} | %clr(${SERVICE_NAME}){blue} [%X{RequestId}] %clr(-%5p) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%-15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %dmsg{${LOG_CON_SUM}}%n -%wex"/>
+              value="%d{yyyy-MM-dd HH:mm:ss.SSS} | ${SERVICE_NAME} [%X{RequestId}] -%5p ${PID:- } --- [%-15.15t] %-40.40logger{39} : %dmsg{${LOG_CON_SUM}}%n"/>
 
     <property name="FILE_LOG_PATTERN"
               value="%d{yyyy-MM-dd HH:mm:ss.SSS} | ${SERVICE_NAME} [%X{RequestId}] [%thread] %-5level %logger{40} - %dmsg{${LOG_CON_SUM}} %n"/>
@@ -39,7 +39,7 @@
         </encoder>
 
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>${LOG_HOME}/log-service-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <fileNamePattern>${LOG_HOME}/${SERVICE_NAME}-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
             <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
                 <maxFileSize>10MB</maxFileSize>
             </timeBasedFileNamingAndTriggeringPolicy>
