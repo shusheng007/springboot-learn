@@ -5,11 +5,11 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.1.6</version>
+        <version>3.4.6</version>
         <relativePath/>
     </parent>
 
-    <groupId>top.ss007</groupId>
+    <groupId>top.shusheng007</groupId>
     <artifactId>spring-learn</artifactId>
     <version>${revision}</version>
     <packaging>pom</packaging>
@@ -24,15 +24,14 @@
 
         <revision>0.0.1-SNAPSHOT</revision>
 
-        <maven.plugin.version>3.9.0</maven.plugin.version>
-        <hutool-core.version>5.8.26</hutool-core.version>
-        <hutool-json.version>5.8.26</hutool-json.version>
-        <hutool-jwt.version>5.8.26</hutool-jwt.version>
-        <spring-doc.version>2.8.5</spring-doc.version>
-        <apache-httpclient.version>4.5.14</apache-httpclient.version>
-        <apache-httpclient5.version>5.3.1</apache-httpclient5.version>
-        <jpamodelgen.version>6.3.2.Final</jpamodelgen.version>
-        <spring-cloud.version>2022.0.3</spring-cloud.version>
+        <maven-compiler-plugin.version>3.14.0</maven-compiler-plugin.version>
+        <hutool-core.version>5.8.38</hutool-core.version>
+        <hutool-json.version>5.8.38</hutool-json.version>
+        <hutool-jwt.version>5.8.38</hutool-jwt.version>
+        <spring-doc.version>2.8.8</spring-doc.version>
+        <apache-httpclient5.version>5.4.4</apache-httpclient5.version>
+        <jpamodelgen.version>7.0.0.Final</jpamodelgen.version>
+        <spring-cloud.version>2024.0.1</spring-cloud.version>
         <archunit-junit5.version>1.3.0</archunit-junit5.version>
 
     </properties>
@@ -162,7 +161,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>${maven.plugin.version}</version>
+                <version>${maven-compiler-plugin.version}</version>
                 <configuration>
                     <source>${java.version}</source>
                     <target>${java.version}</target>
