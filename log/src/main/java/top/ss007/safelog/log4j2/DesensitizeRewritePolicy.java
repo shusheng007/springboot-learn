@@ -1,5 +1,6 @@
 package top.ss007.safelog.log4j2;
 
+import org.apache.logging.log4j.Marker;
 import org.apache.logging.log4j.core.LogEvent;
 import org.apache.logging.log4j.core.appender.rewrite.RewritePolicy;
 import org.apache.logging.log4j.core.config.Node;
@@ -28,15 +29,15 @@ public class DesensitizeRewritePolicy implements RewritePolicy {
     private final String policy;
     private final int maxLength;
     private final ReplaceMatcher replaceMatcher;
-    private final List<String> skipLoggers;
+    private final List<String> plainMarkers;
 
-    public DesensitizeRewritePolicy(String regex, int depth, String policy, int maxLength, ReplaceMatcher replaceMatcher, List<String> skipLoggers) {
+    public DesensitizeRewritePolicy(String regex, int depth, String policy, int maxLength, ReplaceMatcher replaceMatcher, List<String> plainMarkers) {
         this.regex = regex;
         this.depth = depth;
         this.policy = policy;
         this.maxLength = maxLength;
         this.replaceMatcher = replaceMatcher;
-        this.skipLoggers = skipLoggers;
+        this.plainMarkers = plainMarkers;
     }
 
     @PluginFactory
@@ -45,16 +46,16 @@ public class DesensitizeRewritePolicy implements RewritePolicy {
             @PluginAttribute("depth") Integer depth,
             @PluginAttribute("policy") String policy,
             @PluginAttribute("maxLength") Integer maxLength,
-            @PluginAttribute("skipLoggers") String skipLoggers) {
+            @PluginAttribute("plainMarkers") String plainMarkers) {
 
         ReplaceMatcher replaceMatcher = null;
         if (!"NA".equalsIgnoreCase(regex)) {
             replaceMatcher = new ReplaceMatcher(regex, depth);
         }
-        if (skipLoggers == null) {
-            skipLoggers = "";
+        if (plainMarkers == null) {
+            plainMarkers = "";
         }
-        return new DesensitizeRewritePolicy(regex, depth, policy, maxLength, replaceMatcher, Arrays.asList(skipLoggers.split(" ")));
+        return new DesensitizeRewritePolicy(regex, depth, policy, maxLength, replaceMatcher, Arrays.asList(plainMarkers.split(",")));
     }
 
 
@@ -77,12 +78,19 @@ public class DesensitizeRewritePolicy implements RewritePolicy {
                 sb.append(source);
             }
 
-            if (replaceMatcher != null && !skipLoggers.contains(event.getLoggerName())) {
+            if (replaceMatcher != null && !isMarkAsPlainLog(event.getMarker())) {
                 return logEventBuilder.setMessage(new SimpleMessage(replaceMatcher.execute(sb, HandlePolicy.fromName(policy)))).build();
             }
             return logEventBuilder.setMessage(new SimpleMessage(sb.toString())).build();
         }
 
         return event;
+    }
+
+    private boolean isMarkAsPlainLog(Marker marker) {
+        if (marker == null) {
+            return false;
+        }
+        return plainMarkers.contains(marker.getName());
     }
 }

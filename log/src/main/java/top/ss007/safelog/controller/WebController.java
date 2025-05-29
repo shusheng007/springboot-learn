@@ -14,8 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/log")
 public class WebController {
-    private Logger log = LoggerFactory.getLogger(WebController.class);
-
+    private final Logger log = LoggerFactory.getLogger(WebController.class);
 
 
     @PostMapping("/check")
@@ -25,7 +24,8 @@ public class WebController {
         log.info(marker,"不脱敏:{}", input);
         log.info("脱敏:{}",input);
 
-
         return "ok";
     }
+
+
 }
