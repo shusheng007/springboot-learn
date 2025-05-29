@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="top.shusheng007.mybatisplus.persistence.mapper.StudentPoMapper">
 
-    <resultMap id="BaseResultMap" type="top.ss007.mybatisplus.persistence.po.StudentPo">
+    <resultMap id="BaseResultMap" type="top.shusheng007.mybatisplus.persistence.po.StudentPo">
         <id property="id" column="id" jdbcType="INTEGER"/>
         <result property="stuName" column="stu_name" jdbcType="VARCHAR"/>
         <result property="age" column="age" jdbcType="INTEGER"/>

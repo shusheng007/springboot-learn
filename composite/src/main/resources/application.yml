@@ -1,5 +1,5 @@
 server:
-  port: 8001
+  port: 8080
 spring:
   application:
     name: composite-service
@@ -51,6 +51,9 @@ conversion:
 #自定义属性值，可以通过转换器转换为其他类型
 developer:
   ss007;18;java
+
+
+
 
 
 
