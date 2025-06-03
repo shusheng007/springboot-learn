@@ -15,12 +15,12 @@ management:
       enabled: true
 
 
-  cus-log:
-    properties:
-      max-limit: 1024
-      plain-markers: "PLAIN1,PLAIN2"
-      # get ss007 and 123 from {"username": "ss007","password": "123"}
-      regex: ((?<="username":\s*").*?(?=")|(?<="password":\s*").*?(?="))
+cus-log:
+  properties:
+    max-limit: 1024
+    plain-markers: "PLAIN1,PLAIN2"
+    # get ss007 and 123 from {"username": "ss007","password": "123"}
+    regex: ((?<="username":\s*").*?(?=")|(?<="password":\s*").*?(?="))
 
 
 

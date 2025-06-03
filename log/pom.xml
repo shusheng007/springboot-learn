@@ -13,19 +13,11 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <logback-core.version>1.5.17</logback-core.version>
         <logback-classic.version>1.5.17</logback-classic.version>
         <log4j-core.version>2.24.3</log4j-core.version>
     </properties>
 
     <dependencies>
-        <!-- https://mvnrepository.com/artifact/ch.qos.logback/logback-core -->
-<!--        <dependency>-->
-<!--            <groupId>ch.qos.logback</groupId>-->
-<!--            <artifactId>logback-core</artifactId>-->
-<!--            <version>${logback-core.version}</version>-->
-<!--            <scope>provided</scope>-->
-<!--        </dependency>-->
         <!-- https://mvnrepository.com/artifact/ch.qos.logback/logback-classic -->
         <dependency>
             <groupId>ch.qos.logback</groupId>
